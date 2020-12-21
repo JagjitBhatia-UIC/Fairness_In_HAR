@@ -1,6 +1,6 @@
 # Fairness in Human Activity Recognition
 
-In this tutorial, we will build a method for quantifying the fairness of Human Activity Recognition models with respect to gender through the use of a gender classifier. We wil begin with a brief background on HAR systems and fairness (and why it's important to measure fairness in HAR) followed by a high-level overview of the system that we will be building. Once we have a general understanding of the system, we will jump right into building it. 
+In this tutorial, we will build a system for quantifying the fairness of Human Activity Recognition models with respect to gender through the use of a gender classifier. We wil begin with a brief background on HAR systems and fairness (and why it's important to measure fairness in HAR) followed by a high-level overview of the system that we will be building. Once we have a general understanding of the system, we will jump right into building it. 
 
 ## Background
 ### Why Fairness?
@@ -23,4 +23,20 @@ In order to measure HAR fairness, we need information regarding the sensitive at
 ![](proparch.jpg)
 
 As shown above, the Sensitive Attribute Classifier contains an ANN for classifying gender as gender is the sensitive attribute we are focusing on in this tutorial. However, this framework can easily be extended to any other sensitive attribute by simply replacing the gender classifier with a classifier of the sensitive attribute being measured. The Fairness Processor takes the Activity *prediction* from the Activity Classifier, the Gender *prediction* from the Sensitive Attribute Classifier, and the Activity *actual* from the ground truth of the given dataset and passes them to a custom-built *evaluator* function that then computes the accuracy for each *class bucket*. The class buckets are simply containers for the model's accuracy for each sensitive attribute classification. The classifications provided by our gender classifier are male, female, and other each have a respective class bucket that holds their respective model accuracies. 
+
+## Implementation
+The original HAR model used in this tutorial can be found at https://github.com/kenshohara/3D-ResNets-PyTorch and the original gender classifier can be found at https://github.com/arunponnusamy/gender-detection-keras. In this section, we will be modifying these files in order to build the above system. 
+
+Take a look at genderDetector.py, which is a modification of Arun's detect_gender.py. We first begin by extending the existing classes [man, woman] by adding a third class, *unknown*, for when the gender classifier is unable to predict the gender of the individual in the video frame with enough confidence. Then, after calculating conf in line 73, we add a check to first see if the maximum confidence is above 65%. If not, we classify the frame as unknown. Otherwise, we return the class with the higher confidence.
+
+if max(norm) < 65:
+    return classes[2]
+
+elif conf[1] > conf[0]:
+    return classes[1]
+
+else:
+    return classes[0]
+
+
 
