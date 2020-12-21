@@ -6,8 +6,6 @@ In this tutorial, we will build a system for quantifying the fairness of Human A
 ### Why Fairness?
 To begin, let's first discuss the need for measuring fairness in the context of computer vision. If you do a quick google images search for "bias in computer vision", you'll see numerous examples of how bias seeps into CV systems when depoloyed into the real world (some examples below). When constructing CV systems, it's imperative that these systems perform consistently across all groups of people (e.g. race, gender, age) to prevent biased outcomes. 
 
-![](https://i.gzn.jp/img/2020/06/25/facial-recognition-false-arrest/000.jpg)
-
 ![](https://algorithmwatch.org/wp-content/uploads/2020/04/googlevision.png)
 
 ![](https://api.time.com/wp-content/uploads/2019/02/oprah-winfrey.png)
