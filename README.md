@@ -6,6 +6,12 @@ In this tutorial, we will build a system for quantifying the fairness of Human A
 ### Why Fairness?
 To begin, let's first discuss the need for measuring fairness in the context of computer vision. If you do a quick google images search for "bias in computer vision", you'll see numerous examples of how bias seeps into CV systems when depoloyed into the real world (some examples below). When constructing CV systems, it's imperative that these systems perform consistently across all groups of people (e.g. race, gender, age) to prevent biased outcomes. 
 
+![](https://i.gzn.jp/img/2020/06/25/facial-recognition-false-arrest/000.jpg)
+
+![](https://algorithmwatch.org/wp-content/uploads/2020/04/googlevision.png)
+
+![](https://api.time.com/wp-content/uploads/2019/02/oprah-winfrey.png)
+
 ### Understanding HAR
 The central goal behind **Human Activity/Action Recognition** is pretty intuitive - we aim to teach computers to recognize human activities such as cooking, biking, jumping jacks, etc. The applications of this technology are plentiful: crime detection, recognizing critical health conditions, and motion-based control are just a few. 
 
