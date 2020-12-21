@@ -27,7 +27,7 @@ As shown above, the Sensitive Attribute Classifier contains an ANN for classifyi
 ## Implementation
 In this section, we will be modifying two repositories, [arunponnusamy/gender-detection-keras](https://github.com/arunponnusamy/gender-detection-keras) (gender classifier) and [kenshohara/3D-ResNets-PyTorch](https://github.com/kenshohara/3D-ResNets-PyTorch) (activity classifier) in order to build the above system. 
 
-First we will modify detect_gender.py of gender-detection-keras. The final result of the modification can be found in genderDetector.py. We first begin by extending the existing classes [man, woman] by adding a third class, *unknown*, for when the gender classifier is unable to predict the gender of the individual in the video frame with enough confidence. Then, after calculating conf in line 73, we add a check to first see if the maximum confidence is above 65%. If not, we classify the frame as unknown. Otherwise, we return the class with the higher confidence.
+First we will modify *detect_gender.py* of **gender-detection-keras**. The final result of the modification can be found in *genderDetector.py*. We first begin by extending the existing classes [man, woman] by adding a third class, *unknown*, for when the gender classifier is unable to predict the gender of the individual in the video frame with enough confidence. Then, after calculating *conf* in line 73, we add a check to first see if the maximum confidence is above 65%. If not, we classify the frame as unknown. Otherwise, we return the class with the higher confidence.
 
 ```python
 if max(norm) < 65:
@@ -41,9 +41,9 @@ else:
 
 ```
 
-Once this is added, delete the remainder of the code both inside the *for* loop as well as the remaining code after the loop terminates as it won't be needed for this tutorial. Save this modified file as genderDetector.py in the root directory of 3D-ResNets-PyTorch as it will be referenced as genderDetector in the other modules in the repo. 
+Once this is added, delete the remainder of the code both inside the *for* loop as well as the remaining code after the loop terminates as it won't be needed for this tutorial. Save this modified file as *genderDetector.py* in the root directory of **3D-ResNets-PyTorch** as it will be referenced as *genderDetector* in the other modules in the repo. 
 
-In eval_accuracy.py of 3D-ResNets-PyTorch, import the newly added genderDetector module as gd.
+In *eval_accuracy.py* of **3D-ResNets-PyTorch**, import the newly added *genderDetector* module as *gd*.
 
 ```python
 import genderDetector as gd
