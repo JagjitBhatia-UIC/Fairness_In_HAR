@@ -13,7 +13,11 @@ The central goal behind **Human Activity/Action Recognition** is pretty intuitiv
 
 Most HAR systems used today contain three main components: A **Data Source** (Input), an **Activity Classifier** (Model), and a **Class Prediction** (Output), where the Activity Classifier is the key component in predicting the activity. 
 
+![](arch.jpg)
+
 In the following section, we will extend this system such that it enables us to measure the fairness of the Activity Classifier with respect to gender.
 
 ## System Architecture
 In order to measure HAR fairness, we need information regarding the sensitive attribute(s) of the individuals performing the activity in the input video segment (such as the person's age, gender, etc.). However, most public HAR datasets don't contain this kind of information. Our goal is to design a system that isn't dependent on the dataset to provide this kind of information to measure fairness. To achieve this, we will extend the system by adding two components - one that predicts the sensitive attribute information of the individual, the **Sensitive Attribute Classifier**, and another that computes the fairness with respect to the sensitive attribute predictions, the **Fairness Processor**. 
+
+![](proparch.jpg)
