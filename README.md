@@ -29,6 +29,7 @@ The original HAR model used in this tutorial can be found at https://github.com/
 
 Take a look at genderDetector.py, which is a modification of Arun's detect_gender.py. We first begin by extending the existing classes [man, woman] by adding a third class, *unknown*, for when the gender classifier is unable to predict the gender of the individual in the video frame with enough confidence. Then, after calculating conf in line 73, we add a check to first see if the maximum confidence is above 65%. If not, we classify the frame as unknown. Otherwise, we return the class with the higher confidence.
 
+```python
 if max(norm) < 65:
     return classes[2]
 
@@ -38,5 +39,5 @@ elif conf[1] > conf[0]:
 else:
     return classes[0]
 
-
+```
 
